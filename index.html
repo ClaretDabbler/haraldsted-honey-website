@@ -35,6 +35,7 @@
         
         /* Hero section styles */
         .hero-section {
+            /* NOTE: Using a relative path for the background image */
             background-image: url('images/Land.JPEG');
             background-size: cover;
             background-position: center;
@@ -56,31 +57,67 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Custom style to ensure the charcoal color is defined for the button base state */
+        .add-to-cart-btn {
+            background-color: var(--charcoal);
+        }
+
     </style>
 </head>
 <body class="bg-white">
 
-    <!-- Header & Navigation -->
-    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+    <!-- Header & Navigation (Sticky Buy Now Button and Cart Icon Added) -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-lg">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#">
                 <img src="images/logo2.jpg" alt="Haraldsted Honning Logo" class="h-12">
             </a>
-            <nav class="hidden md:flex space-x-8">
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
                 <a href="#story" class="text-gray-600 hover:text-amber-600 transition duration-300">Our Story</a>
                 <a href="#flora" class="text-gray-600 hover:text-amber-600 transition duration-300">Local Flora</a>
                 <a href="#process" class="text-gray-600 hover:text-amber-600 transition duration-300">The Process</a>
                 <a href="#products" class="text-gray-600 hover:text-amber-600 transition duration-300">Our Honey</a>
                 <a href="#contact" class="text-gray-600 hover:text-amber-600 transition duration-300">Contact</a>
+                
+                <!-- NEW: Buy Now Button -->
+                <a href="#products" class="ml-4 px-5 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    Buy Now
+                </a>
+                
+                <!-- NEW: Cart Icon (Desktop) -->
+                <button id="cart-button-desktop" class="relative text-gray-600 hover:text-amber-600 transition duration-300 p-2 rounded-full hover:bg-gray-100">
+                    <!-- Shopping Cart SVG -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.72a2 2 0 0 0 2-1.58L23 6H6"/></svg>
+                    <span id="cart-count-desktop" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full hidden">0</span>
+                </button>
             </nav>
-            <button id="mobile-menu-button" class="md:hidden text-gray-800">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
+
+            <!-- Mobile Menu Toggle and Buy Now Button for Mobile -->
+            <div class="flex items-center space-x-4 md:hidden">
+                <!-- NEW: Buy Now Button (Mobile) -->
+                <a href="#products" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-semibold rounded-full shadow-md transition duration-300 ease-in-out">
+                    Buy Now
+                </a>
+                
+                <!-- NEW: Cart Icon (Mobile) -->
+                <button id="cart-button-mobile" class="relative text-gray-800 p-1 rounded-full hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.72a2 2 0 0 0 2-1.58L23 6H6"/></svg>
+                    <span id="cart-count-mobile" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full hidden">0</span>
+                </button>
+                
+                <button id="mobile-menu-button" class="text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
         </div>
-         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+
+         <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-gray-200">
             <a href="#story" class="block py-2 text-gray-600 hover:text-amber-600">Our Story</a>
             <a href="#flora" class="block py-2 text-gray-600 hover:text-amber-600">Local Flora</a>
             <a href="#process" class="block py-2 text-gray-600 hover:text-amber-600">The Process</a>
@@ -233,7 +270,7 @@
             </div>
         </section>
 
-        <!-- 4. Our Honey / Products Section -->
+        <!-- 4. Our Honey / Products Section (The target for the Buy Now button) -->
         <section id="products" class="py-20 bg-cream-50 fade-in-section">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl font-bold mb-4">Taste the Essence of Haraldsted</h2>
@@ -241,55 +278,72 @@
                     Experience the pure, unadulterated flavor of nature, delivered straight from our hives to your table. Each jar of Haraldsted Honey is a testament to our bees' hard work and the pristine beauty of our local landscape. We proudly ship our honey directly to your door, that is if you are in Denmark! We are exploring the possibilites to ship elsewhere in the future...
                 </p>
                 <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <!-- Product 1 -->
+                    <!-- Product 1: Spring Blossom Honey -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                         <img src="images/gold1.JPEG" alt="Jar of Spring Honey" class="w-full h-64 object-cover">
                         <div class="p-6 text-left">
                             <h3 class="text-2xl font-serif font-semibold mb-2">Spring Blossom Honey</h3>
                             <p class="text-gray-600 mb-4">One 450g jar of light, delicate honey from the first blossoms of the year. Notes of apple, hawthorn, and dandelion give it a fresh, floral taste.</p>
                             <div class="flex justify-between items-center">
-                                <span class="text-xl font-bold">40 DKK + shipping (to Denmark only)</span>
-                                <button class="px-6 py-2 bg-charcoal text-white rounded-md hover:bg-gray-800 transition-colors duration-300" style="background-color: var(--charcoal);">Add to Cart</button>
+                                <span class="text-xl font-bold">50 DKK + shipping (to Denmark only)</span>
+                                <!-- Price updated to 50 in JS call -->
+                                <button onclick="addToCart('P1', 'Spring Blossom Honey', 50, this)" class="px-6 py-2 add-to-cart-btn text-white rounded-md hover:bg-amber-600 transition-all duration-300">Add to Cart</button>
                             </div>
                         </div>
                     </div>
-                    <!-- Product 2 -->
+                    <!-- Product 2: Summer Wildflower Honey -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300">
                         <img src="images/summergold.JPEG" alt="Jar of Summer Honey" class="w-full h-64 object-cover">
                         <div class="p-6 text-left">
                             <h3 class="text-2xl font-serif font-semibold mb-2">Summer Wildflower Honey</h3>
                             <p class="text-gray-600 mb-4">One 450g jar of rich and aromatic honey capturing the essence of summer meadows. A complex, classic taste from a blend of seasonal wildflowers.</p>
                             <div class="flex justify-between items-center">
-                                <span class="text-xl font-bold">40 DKK + shipping (to Denmark only)</span>
-                                <button class="px-6 py-2 bg-charcoal text-white rounded-md hover:bg-gray-800 transition-colors duration-300" style="background-color: var(--charcoal);">Add to Cart</button>
+                                <span class="text-xl font-bold">50 DKK + shipping (to Denmark only)</span>
+                                <!-- Price updated to 50 in JS call -->
+                                <button onclick="addToCart('P2', 'Summer Wildflower Honey', 50, this)" class="px-6 py-2 add-to-cart-btn text-white rounded-md hover:bg-amber-600 transition-all duration-300">Add to Cart</button>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-<-!--        
-      <!-- 5. Testimonials Section --
-        <section id="testimonials" class="py-20 fade-in-section">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-12">What Our Customers Say</h2>
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-cream-50 p-8 rounded-lg">
-                        <p class="text-gray-600 italic mb-4">"Absolutely the best honey I have ever tasted. You can taste the quality and the care that goes into it. The honeycomb is a special treat. Fast delivery too!"</p>
-                        <div class="text-yellow-500 text-xl mb-2">★★★★★</div>
-                        <p class="font-semibold">- Lars P., Copenhagen</p>
-                    </div>
-                     <div class="bg-cream-50 p-8 rounded-lg">
-                        <p class="text-gray-600 italic mb-4">"I ordered this as a gift, and it arrived beautifully packaged. It feels so special and local. A true taste of the Danish countryside."</p>
-                        <div class="text-yellow-500 text-xl mb-2">★★★★★</div>
-                        <p class="font-semibold">- Mette K., Aarhus</p>
+
+                <!-- NEW: Shipping Rate Summary Table -->
+                <div class="mt-16 max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg border border-yellow-200">
+                    <h3 class="text-2xl font-serif font-semibold mb-4 text-left border-b pb-2 border-yellow-300">Shipping Rates (Denmark Only)</h3>
+                    <p class="text-sm text-gray-500 mb-4 text-left">Maximum purchase is 6 jars. Shipping cost is determined by the total number of jars in your order.</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 text-left text-sm">
+                            <thead class="bg-yellow-50">
+                                <tr>
+                                    <th scope="col" class="px-4 py-3 font-semibold text-gray-700 uppercase tracking-wider rounded-tl-lg">Jars Bought</th>
+                                    <th scope="col" class="px-4 py-3 font-semibold text-gray-700 uppercase tracking-wider">Postpakke Collect</th>
+                                    <th scope="col" class="px-4 py-3 font-semibold text-gray-700 uppercase tracking-wider rounded-tr-lg">Postpakke Home</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-yellow-50">
+                                    <td class="px-4 py-3 font-medium">1 Jar</td>
+                                    <td class="px-4 py-3">45 Kr</td>
+                                    <td class="px-4 py-3">60 Kr</td>
+                                </tr>
+                                <tr class="hover:bg-yellow-50">
+                                    <td class="px-4 py-3 font-medium">2 Jars</td>
+                                    <td class="px-4 py-3">55 Kr</td>
+                                    <td class="px-4 py-3">70 Kr</td>
+                                </tr>
+                                <tr class="bg-yellow-100/50 hover:bg-yellow-100">
+                                    <td class="px-4 py-3 font-medium">3 - 6 Jars (Max)</td>
+                                    <td class="px-4 py-3">80 Kr</td>
+                                    <td class="px-4 py-3">95 Kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </section>
-
+        
     </main>
--->
     
     <!-- 6. Contact & Footer -->
     <footer id="contact" class="bg-gray-800 text-white">
@@ -327,6 +381,62 @@
         </div>
     </footer>
     
+    <!-- Shopping Cart Drawer/Modal (NEW) -->
+    <div id="cart-drawer" class="fixed inset-0 z-[100] transform translate-x-full transition-transform duration-300 ease-in-out" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+        <!-- Overlay (Click to close cart) -->
+        <div class="absolute inset-0 bg-gray-900 bg-opacity-50" onclick="toggleCart()"></div>
+        
+        <!-- Drawer Content -->
+        <div class="fixed top-0 right-0 w-full md:w-96 h-full bg-white shadow-2xl p-6 flex flex-col">
+            
+            <!-- Header -->
+            <div class="flex justify-between items-center pb-4 border-b border-gray-200">
+                <h3 id="cart-title" class="text-2xl font-serif font-bold">Your Cart</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-800 p-2 rounded-full hover:bg-gray-100 transition" aria-label="Close cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            
+            <!-- Cart Items -->
+            <div id="cart-items-container" class="flex-grow overflow-y-auto py-4 space-y-4">
+                <!-- Cart items will be rendered here by JS -->
+                <p id="empty-cart-message" class="text-center text-gray-500 italic">Your hive is empty!</p>
+            </div>
+            
+            <!-- Footer / Totals & Checkout (UPDATED) -->
+            <div class="pt-4 border-t border-gray-200">
+                <div class="pt-2 pb-4 bg-yellow-50 rounded-lg mb-4 border border-yellow-200 p-3">
+                    <div class="flex justify-between mb-2">
+                        <span class="text-sm text-gray-600">Subtotal:</span>
+                        <span id="cart-subtotal" class="text-sm font-semibold text-charcoal">0 DKK</span>
+                    </div>
+                    <hr class="border-yellow-200 mb-2">
+                    
+                    <!-- Shipping Selector (NEW) -->
+                    <label for="shipping-select" class="block text-sm font-medium text-gray-700 mb-1">Shipping Method (Denmark):</label>
+                    <select id="shipping-select" onchange="selectShipping(this.value)" class="w-full p-2 border border-yellow-300 rounded-md bg-white text-gray-700 focus:ring-yellow-500 focus:border-yellow-500">
+                        <!-- Options populated by JS -->
+                    </select>
+
+                    <div class="flex justify-between mt-2">
+                        <span class="text-sm text-gray-600">Shipping Cost:</span>
+                        <span id="shipping-cost-display" class="text-sm font-semibold text-charcoal">0 DKK</span>
+                    </div>
+
+                </div>
+                
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xl font-bold">Total:</span>
+                    <span id="cart-total" class="text-2xl font-bold text-yellow-600">0 DKK</span>
+                </div>
+
+                <button class="w-full py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-[1.01]">
+                    Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <script>
         // Simple script for mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -351,7 +461,354 @@
         sections.forEach(section => {
             observer.observe(section);
         });
+
+
+        // ------------------------------------------------------------------
+        // NEW SHOPPING CART LOGIC
+        // ------------------------------------------------------------------
+
+        let cart = [];
+        
+        // Define shipping rates based on quantity tiers (Max 6 Jars)
+        // UPDATED: Specific rates for 1 jar, 2 jars, and 3-6 jars.
+        const SHIPPING_TIERS = [
+            // Tier 1: 1 Jar
+            { maxQuantity: 1, collect: 45, home: 60 },
+            // Tier 2: 2 Jars
+            { maxQuantity: 2, collect: 55, home: 70 },
+            // Tier 3: 3 - 6 Jars (Max purchase is 6)
+            { maxQuantity: 6, collect: 80, home: 95 }
+        ];
+        
+        const MAX_PURCHASE_QUANTITY = 6; // Hard limit set by the user
+
+        let selectedShippingKey = 'collect'; // Default selection
+        const SHIPPING_STORAGE_KEY = 'haraldstedHoneyShipping';
+        const CART_STORAGE_KEY = 'haraldstedHoneyCart';
+
+
+        // Utility to save cart (and shipping) to localStorage
+        function saveCart() {
+            try {
+                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+                localStorage.setItem(SHIPPING_STORAGE_KEY, selectedShippingKey);
+            } catch (e) {
+                console.error("Could not save cart/shipping to localStorage:", e);
+            }
+        }
+
+        // Utility to load cart (and shipping) from localStorage
+        function loadCart() {
+            try {
+                const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+                if (storedCart) {
+                    cart = JSON.parse(storedCart);
+                }
+                const storedShipping = localStorage.getItem(SHIPPING_STORAGE_KEY);
+                if (storedShipping) {
+                    selectedShippingKey = storedShipping;
+                }
+            } catch (e) {
+                console.error("Could not load cart/shipping from localStorage:", e);
+            }
+            updateCartUI();
+        }
+
+        /**
+         * Calculates the total number of items in the cart.
+         * @returns {number} Total quantity of all items.
+         */
+        function getTotalQuantity() {
+            return cart.reduce((total, item) => total + item.quantity, 0);
+        }
+
+        /**
+         * Determines the current shipping cost based on the total quantity and selected method.
+         * @returns {number} The current shipping cost in DKK.
+         */
+        function getShippingCost() {
+            const totalQuantity = getTotalQuantity();
+
+            if (totalQuantity === 0) {
+                // If cart is empty, shipping cost is 0
+                return 0;
+            }
+
+            // Find the correct tier by iterating through tiers until quantity is met
+            const tier = SHIPPING_TIERS.find(t => totalQuantity <= t.maxQuantity);
+
+            // Use the cost based on the selected method ('collect' or 'home')
+            if (tier && tier[selectedShippingKey] !== undefined) {
+                return tier[selectedShippingKey];
+            }
+
+            // Fallback: This should ideally not be reached if MAX_PURCHASE_QUANTITY is 6
+            const maxTier = SHIPPING_TIERS[SHIPPING_TIERS.length - 1];
+            return maxTier[selectedShippingKey] || 0;
+        }
+
+
+        // Function to handle shipping selection change
+        function selectShipping(key) {
+            if (key === 'collect' || key === 'home') {
+                selectedShippingKey = key;
+                saveCart();
+                updateCartUI(); // Update UI with new shipping cost
+            } else {
+                console.error("Invalid shipping key selected:", key);
+            }
+        }
+
+        // Renders the cart contents in the drawer and updates the counts
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const subtotalElement = document.getElementById('cart-subtotal');
+            const totalElement = document.getElementById('cart-total');
+            const emptyMessage = document.getElementById('empty-cart-message');
+            const cartCountDesktop = document.getElementById('cart-count-desktop');
+            const cartCountMobile = document.getElementById('cart-count-mobile');
+            const shippingSelect = document.getElementById('shipping-select'); 
+            const shippingCostDisplay = document.getElementById('shipping-cost-display');
+            
+            let subtotal = 0;
+            const totalItems = getTotalQuantity(); // Use the getter function
+            const isCartFull = totalItems >= MAX_PURCHASE_QUANTITY; // Check against max limit
+
+            // Calculate current subtotal
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+            });
+
+            const currentShippingCost = getShippingCost(); // Use the dynamic function
+            const finalTotal = subtotal + currentShippingCost;
+
+            // Handle empty cart state
+            if (cart.length === 0) {
+                if (container) container.innerHTML = '';
+                if (emptyMessage) emptyMessage.style.display = 'block';
+                
+                // Explicitly reset totals and badges when cart is empty
+                if (subtotalElement) subtotalElement.textContent = `0 DKK`;
+                if (totalElement) totalElement.textContent = `0 DKK`;
+                if (shippingCostDisplay) shippingCostDisplay.textContent = `0 DKK`; // Shipping is 0 when cart is empty
+
+                if (cartCountDesktop) {
+                    cartCountDesktop.classList.add('hidden');
+                    cartCountDesktop.textContent = 0;
+                }
+                if (cartCountMobile) {
+                    cartCountMobile.classList.add('hidden');
+                    cartCountMobile.textContent = 0;
+                }
+
+            } else {
+                if (emptyMessage) emptyMessage.style.display = 'none';
+                
+                let html = '';
+
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    
+                    // Determine if the increase button should be disabled for this item
+                    const isIncreaseDisabledForButton = isCartFull ? 'disabled' : '';
+                    const increaseButtonClasses = isCartFull ? 'bg-gray-300 cursor-not-allowed' : 'border-gray-300 hover:bg-gray-200';
+
+                    html += `
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg shadow-sm">
+                            <!-- Item Info -->
+                            <div class="flex-grow">
+                                <h4 class="font-semibold text-gray-800">${item.name}</h4>
+                                <p class="text-sm text-gray-500">${item.price} DKK each</p>
+                            </div>
+                            
+                            <!-- Quantity Controls -->
+                            <div class="flex items-center space-x-3 text-gray-700 mx-4">
+                                <button onclick="changeQuantity('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center border border-gray-300 rounded-full hover:bg-gray-200 transition text-lg leading-none" aria-label="Decrease ${item.name} quantity">-</button>
+                                <span class="font-bold">${item.quantity}</span>
+                                <button ${isIncreaseDisabledForButton} onclick="changeQuantity('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center border ${increaseButtonClasses} transition text-lg leading-none" aria-label="Increase ${item.name} quantity">+</button>
+                            </div>
+
+                            <!-- Total Price & Remove -->
+                            <div class="text-right flex flex-col items-end">
+                                <p class="font-bold text-sm">${itemTotal} DKK</p>
+                                <button onclick="removeItem('${item.id}')" class="text-xs text-red-500 hover:text-red-700 transition mt-1" aria-label="Remove ${item.name}">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                if (container) container.innerHTML = html;
+                
+                // Populate Shipping Options
+                if (shippingSelect) {
+                    shippingSelect.innerHTML = '';
+                    
+                    // Since the cost is dynamic, we display the current tier's cost in the option text for clarity
+                    const collectCost = getShippingCostForMethod('collect', totalItems);
+                    const homeCost = getShippingCostForMethod('home', totalItems);
+                    
+                    const shippingOptions = [
+                        { key: 'collect', name: 'Postpakke Collect', cost: collectCost },
+                        { key: 'home', name: 'Postpakke Home', cost: homeCost }
+                    ];
+
+                    let shippingHtml = '';
+                    shippingOptions.forEach(option => {
+                        const selected = option.key === selectedShippingKey ? 'selected' : '';
+                        shippingHtml += `<option value="${option.key}" ${selected}>${option.name} (${option.cost} DKK)</option>`;
+                    });
+                    shippingSelect.innerHTML = shippingHtml;
+                }
+                
+                // Render totals
+                if (subtotalElement) subtotalElement.textContent = `${subtotal} DKK`;
+                if (shippingCostDisplay) shippingCostDisplay.textContent = `${currentShippingCost} DKK`;
+                if (totalElement) totalElement.textContent = `${finalTotal} DKK`;
+                
+                // Update cart badges
+                if (cartCountDesktop) {
+                    cartCountDesktop.textContent = totalItems;
+                    cartCountDesktop.classList.remove('hidden');
+                }
+                if (cartCountMobile) {
+                    cartCountMobile.textContent = totalItems;
+                    cartCountMobile.classList.remove('hidden');
+                }
+            }
+        }
+
+        /**
+         * Helper function to get the shipping cost for a specific method and quantity.
+         */
+        function getShippingCostForMethod(methodKey, quantity) {
+            // Find the correct tier based on the provided quantity
+            const tier = SHIPPING_TIERS.find(t => quantity <= t.maxQuantity);
+            
+            // Return the cost for the specified method, or 0 if not found
+            if (tier && tier[methodKey] !== undefined) {
+                return tier[methodKey];
+            }
+            return 0;
+        }
+
+        // Function to add a product to the cart (checks against MAX_PURCHASE_QUANTITY)
+        function addToCart(id, name, price, buttonElement) {
+            price = parseFloat(price);
+            
+            const totalQuantity = getTotalQuantity();
+            const newTotalQuantity = totalQuantity + 1; // Attempting to add 1 jar
+
+            if (newTotalQuantity > MAX_PURCHASE_QUANTITY) {
+                console.warn(`Purchase limit reached: Cannot buy more than ${MAX_PURCHASE_QUANTITY} jars total.`);
+                
+                // Visual feedback for hitting the limit (Red flash)
+                if (buttonElement) {
+                    const originalText = "Add to Cart";
+                    const originalClasses = 'px-6 py-2 add-to-cart-btn text-white rounded-md hover:bg-amber-600 transition-all duration-300';
+                    buttonElement.disabled = true;
+                    buttonElement.textContent = `Limit Reached (${MAX_PURCHASE_QUANTITY})`;
+                    buttonElement.className = 'px-6 py-2 bg-red-500 text-white rounded-md transition-all duration-300 shadow-md';
+                    
+                    setTimeout(() => {
+                        buttonElement.textContent = originalText;
+                        buttonElement.className = originalClasses; 
+                        buttonElement.disabled = false;
+                    }, 1000);
+                }
+                toggleCart(true); // Open cart to show user limit
+                return; 
+            }
+
+            const existingItem = cart.find(item => item.id === id);
+            const newPrice = price; 
+
+            if (existingItem) {
+                if (existingItem.price !== newPrice) {
+                    existingItem.price = newPrice;
+                }
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price: newPrice, quantity: 1 });
+            }
+
+            saveCart();
+            updateCartUI(); 
+            toggleCart(true); 
+
+            // --- Visual Feedback Logic (Green flash on success) ---
+            if (buttonElement) {
+                const originalText = "Add to Cart";
+                const originalClasses = 'px-6 py-2 add-to-cart-btn text-white rounded-md hover:bg-amber-600 transition-all duration-300';
+                
+                buttonElement.disabled = true;
+                buttonElement.textContent = 'Added! ✓';
+                buttonElement.className = 'px-6 py-2 bg-green-500 text-white rounded-md transition-all duration-300 shadow-md';
+                
+                setTimeout(() => {
+                    buttonElement.textContent = originalText;
+                    buttonElement.className = originalClasses; 
+                    buttonElement.disabled = false;
+                }, 1000);
+            }
+            // --- END Visual Feedback Logic ---
+        }
+
+        // Function to change item quantity (checks against MAX_PURCHASE_QUANTITY)
+        function changeQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            
+            if (item) {
+                // Check for exceeding the limit when INCREASING quantity
+                if (change > 0) {
+                    const totalQuantity = getTotalQuantity();
+                    const newTotalQuantity = totalQuantity + change;
+
+                    if (newTotalQuantity > MAX_PURCHASE_QUANTITY) {
+                        console.warn(`Purchase limit reached: Cannot exceed ${MAX_PURCHASE_QUANTITY} jars total.`);
+                        return; // Stop the increase
+                    }
+                }
+                
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeItem(id); // Remove if quantity drops to 0 or less
+                } else {
+                    saveCart();
+                    updateCartUI();
+                }
+            }
+        }
+
+        // Function to remove an item completely
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+            updateCartUI();
+        }
+
+        // Function to toggle the cart drawer visibility
+        function toggleCart(forceOpen) {
+            const drawer = document.getElementById('cart-drawer');
+            const isOpen = drawer.classList.contains('translate-x-0');
+            
+            // Toggle based on current state or forced open
+            if (forceOpen === true || !isOpen) {
+                drawer.classList.remove('translate-x-full');
+                drawer.classList.add('translate-x-0');
+            } else {
+                drawer.classList.remove('translate-x-0');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        // Initialize cart on page load
+        window.addEventListener('load', () => {
+            loadCart(); 
+            
+            // Attach toggle listeners to cart buttons
+            document.getElementById('cart-button-desktop').addEventListener('click', () => toggleCart());
+            document.getElementById('cart-button-mobile').addEventListener('click', () => toggleCart());
+        });
     </script>
 </body>
 </html>
-
