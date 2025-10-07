@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haraldsted Honey - Pure, Natural Honey</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700;1,300..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <style>
+        /* Define custom color palette and fonts */
+        :root {
+            --amber: #FFBF00;
+            --gold: #D4AF37;
+            --cream: #F5F5DC;
+            --charcoal: #36454F;
+            --forest-green: #228B22;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--charcoal);
+        }
+
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Lora', serif;
+        }
+        
+        /* Hero section styles (Desktop: Parallax effect) */
+        .hero-section {
+            background-image: url('images/Land.JPEG');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect for desktop */
+        }
+        
+        /* FIX FOR IPHONES/MOBILE (Option 1) */
+        /* Override background-attachment for screen widths up to 768px (common tablet size) */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-attachment: scroll; /* Allows image to display on iOS */
+            }
+        }
+
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Animation for fade-in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Header & Navigation (UPDATED: Added Language Switcher) -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#">
+                <img src="images/logo2.png" alt="Haraldsted Honning Logo" class="h-12" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'48\' height=\'48\' viewBox=\'0 0 48 48\'><rect width=\'48\' height=\'48\' fill=\'%23F5D0A9\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'20\' font-family=\'Lora, serif\' fill=\'%2336454F\'>HH</text></svg>';">
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#story" class="text-gray-600 hover:text-amber-600 transition duration-300">Our Story</a>
+                <a href="#flora" class="text-gray-600 hover:text-amber-600 transition duration-300">Local Flora</a>
+                <a href="#process" class="text-gray-600 hover:text-amber-600 transition duration-300">The Process</a>
+                <a href="#products-store" class="text-gray-600 hover:text-amber-600 transition duration-300">Our Honey (Shop)</a>
+                <a href="#contact" class="text-gray-600 hover:text-amber-600 transition duration-300">Contact</a>
+                
+                <!-- Buy Now Button (Links to new embedded store section) -->
+                <a href="#products-store" class="ml-4 px-5 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    Shop Now
+                </a>
+                
+                <!-- Language Switcher (Desktop) -->
+                <div class="flex items-center space-x-2 text-sm">
+                    <span class="font-bold text-charcoal">EN</span>
+                    <a href="index_da.html" class="text-gray-500 hover:text-amber-600 transition">DA</a>
+                </div>
+                
+                <!-- REMOVED: Custom Cart Icon (Ecwid uses its own floating cart icon) -->
+            </nav>
+
+            <!-- Mobile Menu Toggle and Buy Now Button for Mobile -->
+            <div class="flex items-center space-x-4 md:hidden">
+                <!-- Buy Now Button (Mobile) -->
+                <a href="#products-store" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-semibold rounded-full shadow-md transition duration-300 ease-in-out">
+                    Shop Now
+                </a>
+                
+                <!-- Language Switcher (Mobile) -->
+                <div class="flex items-center space-x-2 text-sm">
+                    <span class="font-bold text-charcoal">EN</span>
+                    <a href="index_da.html" class="text-gray-500 hover:text-amber-600 transition">DA</a>
+                </div>
+                
+                <!-- REMOVED: Custom Cart Icon -->
+                
+                <button id="mobile-menu-button" class="text-gray-800">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+         <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 border-t border-gray-200">
+            <a href="#story" class="block py-2 text-gray-600 hover:text-amber-600">Our Story</a>
+            <a href="#flora" class="block py-2 text-gray-600 hover:text-amber-600">Local Flora</a>
+            <a href="#process" class="block py-2 text-gray-600 hover:text-amber-600">The Process</a>
+            <a href="#products-store" class="block py-2 text-gray-600 hover:text-amber-600">Our Honey (Shop)</a>
+            <a href="#contact" class="block py-2 text-gray-600 hover:text-amber-600">Contact</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- 1. Hero Section -->
+        <section id="home" class="hero-section h-screen flex items-center justify-center text-white text-center">
+            <div class="hero-overlay w-full h-full flex flex-col items-center justify-center p-6">
+                <h1 class="text-5xl md:text-7xl font-bold tracking-wider leading-tight">Haraldsted Honey</h1>
+                <p class="mt-4 text-xl md:text-2xl font-serif">Pure, Natural Honey from Our Local Hives</p>
+                <a href="#products-store" class="mt-8 px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">
+                    Shop Now
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. About Us / Our Story Section -->
+        <section id="story" class="py-20 bg-cream-50 fade-in-section">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left">
+                        <h2 class="text-4xl font-bold mb-4">From Our Hives to Your Home</h2>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Nestled by the serene lake of Haraldsted, our apiary thrives amidst lush meadows, vast forests and wild flora. Haraldsted Honning is more than a product; it’s a story of passion, patience, and a deep respect for nature's most diligent artisans: the honeybee. We practice sustainable beekeeping, looking after our bees as we would any other livestock, ensuring our bees are healthy and the local ecosystem is nurtured. Every jar is a taste of the pristine Danish landscape, packaged with care and dedication.
+                        </p>
+                        <blockquote class="border-l-4 border-yellow-500 pl-4 italic text-gray-500">
+                            "Look deep into nature, and then you will understand everything better."
+                        </blockquote>
+                    </div>
+                    <div>
+                        <img src="images/beeworkers.JPEG" alt="Beekeepers working in a field" class="rounded-lg shadow-xl w-full h-auto object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW: Local Flora Section -->
+        <section id="flora" class="py-20 fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4">The Source of Our Sweetness</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+                    The unique, complex flavors of our honey come from the rich diversity of flora surrounding our hives. Each season, our bees gather nectar from a symphony of blossoms, creating a honey that is a true reflection of the Haraldsted landscape.
+                </p>
+
+                <!-- Spring Flora -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-serif font-semibold mb-8">Spring Blooms</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/hawthorn.JPEG" alt="Hawthorn blossoms" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Hawthorn</h4>
+                            <p class="text-gray-600 text-sm">Adds a delicate, nutty sweetness with a pleasant hint of almonds.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/apple.JPEG" alt="Apple blossoms" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Apple</h4>
+                            <p class="text-gray-600 text-sm">Lends a light, fruity, and fresh aroma with a very mild, sweet taste.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/dandy2.JPEG" alt="Dandelion flowers" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Dandelion</h4>
+                            <p class="text-gray-600 text-sm">Contributes a surprisingly bold, tangy flavor with a sharp, citrus-like finish.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/Rapeseed2.JPEG" alt="Rapeseed flowers" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Rapeseed</h4>
+                            <p class="text-gray-600 text-sm">Creates a creamy honey with a mild, slightly peppery sweetness.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/lilac.JPEG" alt="Lilac blossoms" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Lilac</h4>
+                            <p class="text-gray-600 text-sm">Offers a delicate, aromatic floral taste with a hint of spice.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/woodland.JPEG" alt="Woodland flowers like wood anemone" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Woodland Flowers</h4>
+                            <p class="text-gray-600 text-sm">From flowers like wood anemone, adding a delicate, earthy floral note.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summer Flora -->
+                <div>
+                    <h3 class="text-3xl font-serif font-semibold mb-8">Summer Blooms</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/wildflowers.JPEG" alt="Summer wildflowers" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Wildflower</h4>
+                            <p class="text-gray-600 text-sm">A classic flavour, balanced taste from a blend of seasonal flowers.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/Lindon.JPEG" alt="Linden blossoms" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Linden</h4>
+                            <p class="text-gray-600 text-sm">Aromatic with a fresh, woody taste and distinctive minty notes.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/clover.JPEG" alt="Clover blossoms" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Clover</h4>
+                            <p class="text-gray-600 text-sm">The quintessential honey flavor: sweet, mild, and pleasantly clean.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/sunflower2.JPEG" alt="Sunflower blossoms" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Sunflower</h4>
+                            <p class="text-gray-600 text-sm">Adds a bright, golden colour with a distinct floral and citrusy taste.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/lavender.JPEG" alt="Lavender blossoms" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Lavender</h4>
+                            <p class="text-gray-600 text-sm">Adds a unique, aromatic honey with distinct floral and soothing notes.</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center">
+                            <img src="images/tree.JPEG" alt="Tree blossoms" class="rounded-full shadow-lg w-32 h-32 object-cover mb-4">
+                            <h4 class="text-xl font-serif font-semibold mb-2">Tree Blossoms</h4>
+                            <p class="text-gray-600 text-sm">A variety of tree blossom from the surrounding forests contributing a nutty flavor to the honey.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Process Section -->
+        <section id="process" class="py-20 bg-cream-50 fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-12">The Art of Beekeeping</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Stage 1 -->
+                    <div class="flex flex-col items-center">
+                        <img src="images/BuckfastQueen.JPEG" alt="Beekeeper holding a honeycomb frame with bees" class="rounded-lg shadow-lg w-full h-64 object-cover mb-4">
+                        <h3 class="text-2xl font-serif font-semibold mb-2">The Active Hive</h3>
+                        <p class="text-gray-600">Our bees forage on local wildflowers, creating a honey that is unique to the season and the landscape.</p>
+                    </div>
+                    <!-- Stage 2 -->
+                    <div class="flex flex-col items-center">
+                        <img src="images/honeyframe.JPEG" alt="Bees in jars with honeycomb" class="rounded-lg shadow-lg w-full h-64 object-cover mb-4">
+                        <h3 class="text-2xl font-serif font-semibold mb-2">A Light Touch</h3>
+                        <p class="text-gray-600">We lightly filter the harvested honey, preserving its natural structure and potent flavours.</p>
+                    </div>
+                    <!-- Stage 3 -->
+                    <div class="flex flex-col items-center">
+                         <img src="images/bertcomb.JPEG" alt="Person working with honeycomb" class="rounded-lg shadow-lg w-full h-64 object-cover mb-4">
+                        <h3 class="text-2xl font-serif font-semibold mb-2">Careful Handling</h3>
+                        <p class="text-gray-600">Each jar is prepared by hand, unpasturised and packed with care, ensuring the highest quality from our hives to your home.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Ecwid Store Section (Replaces old #products section) -->
+        <section id="products-store" class="py-20 fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold mb-4">Taste the Essence of Haraldsted</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 mb-12">
+                    Experience the pure, unadulterated flavor of nature, delivered straight from our hives to your table. We proudly ship our honey directly to your door, that is if you are in Denmark!
+                </p>
+                
+                <!-- Ecwid Store Embed Container -->
+                <div id="my-store-125024027" class="mb-12">
+                    <!-- Ecwid store content will load here -->
+                </div>
+                <!-- End Ecwid Store Embed Container -->
+
+                <!-- Shipping Rate Summary Table (Keep this here for info, Ecwid calculates final cost) -->
+                <div class="mt-16 max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg border border-yellow-200">
+                    <h3 class="text-2xl font-serif font-semibold mb-4 text-left border-b pb-2 border-yellow-300">Shipping Rates (Denmark Only)</h3>
+                    <p class="text-sm text-gray-500 mb-4 text-left">Maximum purchase is 6 jars. Shipping cost is calculated in the cart based on the total number of jars.</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 text-left text-sm">
+                            <thead class="bg-yellow-50">
+                                <tr>
+                                    <th scope="col" class="px-4 py-3 font-semibold text-gray-700 uppercase tracking-wider rounded-tl-lg">Jars Bought</th>
+                                    <th scope="col" class="px-4 py-3 font-semibold text-gray-700 uppercase tracking-wider">Postpakke Collect</th>
+                                    <th scope="col" class="px-4 py-3 font-semibold text-gray-700 uppercase tracking-wider rounded-tr-lg">Postpakke Home</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr class="hover:bg-yellow-50">
+                                    <td class="px-4 py-3 font-medium">1 Jar</td>
+                                    <td class="px-4 py-3">45 Kr</td>
+                                    <td class="px-4 py-3">60 Kr</td>
+                                </tr>
+                                <tr class="hover:bg-yellow-50">
+                                    <td class="px-4 py-3 font-medium">2 Jars</td>
+                                    <td class="px-4 py-3">55 Kr</td>
+                                    <td class="px-4 py-3">70 Kr</td>
+                                </tr>
+                                <tr class="bg-yellow-100/50 hover:bg-yellow-100">
+                                    <td class="px-4 py-3 font-medium">3 - 6 Jars (Max)</td>
+                                    <td class="px-4 py-3">80 Kr</td>
+                                    <td class="px-4 py-3">95 Kr</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!-- 6. Contact & Footer -->
+    <footer id="contact" class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <!-- Contact Info -->
+                <div class="flex flex-col items-center md:items-start">
+                    <img src="images/logo2.png" alt="Haraldsted Honning Logo" class="h-10 mb-4" onerror="this.onerror=null; this.src='https://placehold.co/150x45/36454F/ffffff?text=HARALDSTED';">
+                    <p class="text-gray-400">Haraldsted, 4100 Ringsted</p>
+                    <p class="text-gray-400">Denmark</p>
+                    <a href="mailto:info@haraldstedhoney.com" class="text-gray-400 hover:text-yellow-400 transition-colors duration-300">info@haraldstedhoney.com</a>
+                </div>
+                <!-- Social & Links -->
+                <div>
+                     <h4 class="text-xl font-serif font-semibold mb-4">Follow Us</h4>
+                     <div class="flex justify-center md:justify-start space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm-1.116 2.913a.904.904 0 10-1.808 0 .904.904 0 001.808 0zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.808a3.327 3.327 0 110 6.654 3.327 3.327 0 010-6.654z" clip-rule="evenodd" /></svg></a>
+                     </div>
+                     <a href="#" class="text-gray-400 hover:text-yellow-400">Privacy Policy</a> | <a href="#" class="text-gray-400 hover:text-yellow-400">Terms of Service</a>
+                </div>
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-xl font-serif font-semibold mb-4">Join Our Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Get updates on the harvest, special offers, and news from our hives.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="w-full rounded-l-md px-4 py-2 text-gray-800 focus:outline-none" required>
+                        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-r-md">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 text-center text-gray-500">
+                <p>&copy; 2025 Haraldsted Honning. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- REMOVED: Custom Shopping Cart Drawer/Modal HTML -->
+    
+    <script>
+        // Simple script for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Simple script for fade-in animations on scroll
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+
+        // ------------------------------------------------------------------
+        // ECWID EMBED CODE (PASTED HERE)
+        // ------------------------------------------------------------------
+        
+        // This script initializes and loads the Ecwid storefront into the div#my-store-125024027
+        // IMPORTANT: The custom cart logic has been removed as Ecwid handles it internally.
+        
+        // Ecwid Script Loader - Added a small delay to allow the main layout to settle, often resolving ResizeObserver errors.
+        setTimeout(function() {
+            (function() {
+                var script = document.createElement('script');
+                script.dataset.cfasync = 'false';
+                script.type = 'text/javascript';
+                script.src = 'https://app.ecwid.com/script.js?125024027&data_platform=code&data_date=2025-10-03';
+                script.charset = 'utf-8';
+                document.head.appendChild(script);
+    
+                script.onload = function() {
+                    // Ecwid Store Initializer
+                    if (typeof xProductBrowser === 'function') {
+                        xProductBrowser("categoriesPerRow=2","views=grid(20,3) list(60) table(60)","categoryView=grid","searchView=list","id=my-store-125024027");
+                    }
+                };
+            })();
+        }, 100); // 100ms delay
+        
+        // ------------------------------------------------------------------
+        // REMOVED: All custom cart functions (cart, addToCart, updateCartUI, etc.)
+        // ------------------------------------------------------------------
+    </script>
+</body>
+</html>
