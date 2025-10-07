@@ -33,12 +33,20 @@
             font-family: 'Lora', serif;
         }
         
-        /* Hero section styles */
+        /* Hero section styles (Desktop: Parallax effect) */
         .hero-section {
             background-image: url('images/Land.JPEG');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax effect */
+            background-attachment: fixed; /* Parallax effect for desktop */
+        }
+        
+        /* FIX FOR IPHONES/MOBILE (Option 1) */
+        /* Override background-attachment for screen widths up to 768px (common tablet size) */
+        @media (max-width: 768px) {
+            .hero-section {
+                background-attachment: scroll; /* Allows image to display on iOS */
+            }
         }
         
         .hero-overlay {
