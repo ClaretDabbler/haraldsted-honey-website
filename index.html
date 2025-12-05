@@ -9,6 +9,22 @@
     <!-- SEO: Meta Description updated to include English search terms (Danish Honey) -->
     <meta name="description" content="Oplev Haraldsted Honning: ren, uforarbejdet og bæredygtigt høstet honning fra lokale danske vildblomster og flora. Pure Danish Honey, Raw Honey, Honing fra Danmark.">
 
+    <!-- SECURITY: Referrer Policy -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <!-- SECURITY: Content Security Policy (CSP) 
+         This tells the browser to only allow content from trusted sources like Ecwid, Google, and Tailwind. 
+    -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https: data:;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://app.ecwid.com https://*.ecwid.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src 'self' data: https://*.ecwid.com https://placehold.co;
+        font-src 'self' https://fonts.gstatic.com;
+        frame-src https://app.ecwid.com https://*.ecwid.com;
+        connect-src 'self' https://*.ecwid.com;
+    ">
+
     <!-- Favicon Link (Updated Path and Type) -->
     <link rel="icon" type="image/png" href="images/Favicon.png">
     <link rel="apple-touch-icon" href="images/Favicon.png">
@@ -355,7 +371,7 @@
                      <h4 class="text-xl font-serif font-semibold mb-4">Følg Os</h4>
                      <div class="flex justify-center md:justify-start space-x-4 mb-4">
                         <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm-1.116 2.913a.904.904 0 10-1.808 0 .904.904 0 001.808 0zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.808a3.327 3.327 0 110 6.654 3.327 3.327 0 010-6.654z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm-1.116 2.913a.904.904 0 10-1.808 0 .904.904 0 001.808 0zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 1.808a3.327 3.327 0 110 6.654 3.327 3.327 0 010-6.654z" clip-rule="evenodd" /></svg></a>
                      </div>
                      <a href="#" class="text-gray-400 hover:text-yellow-400">Privatlivspolitik</a> | <a href="#" class="text-gray-400 hover:text-yellow-400">Servicevilkår</a>
                 </div>

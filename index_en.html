@@ -5,10 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haraldsted Honey - Pure, Natural Honey</title>
     
-    <!-- SEO: Meta Description for Google Search snippets (70-160 characters recommended) -->
+    <!-- SEO: Meta Description -->
     <meta name="description" content="Discover Haraldsted Honey: pure, unprocessed, and sustainably harvested honey from local Danish wildflowers and flora. Taste the essence of nature, shipped directly to your door in Denmark.">
 
-    <!-- Favicon Link (Updated Path and Type) -->
+    <!-- SECURITY: Referrer Policy -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    <!-- SECURITY: Content Security Policy (CSP) 
+         This tells the browser to only allow content from trusted sources like Ecwid, Google, and Tailwind. 
+    -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https: data:;
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://app.ecwid.com https://*.ecwid.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        img-src 'self' data: https://*.ecwid.com https://placehold.co;
+        font-src 'self' https://fonts.gstatic.com;
+        frame-src https://app.ecwid.com https://*.ecwid.com;
+        connect-src 'self' https://*.ecwid.com;
+    ">
+
+    <!-- Favicon Link -->
     <link rel="icon" type="image/png" href="images/Favicon.png">
     <link rel="apple-touch-icon" href="images/Favicon.png">
 
@@ -101,8 +117,6 @@
                     <span class="font-bold text-charcoal">EN</span>
                     <a href="index.html" class="text-gray-500 hover:text-amber-600 transition">DA</a>
                 </div>
-                
-                <!-- REMOVED: Custom Cart Icon (Ecwid uses its own floating cart icon) -->
             </nav>
 
             <!-- Mobile Menu Toggle and Buy Now Button for Mobile -->
@@ -117,8 +131,6 @@
                     <span class="font-bold text-charcoal">EN</span>
                     <a href="index.html" class="text-gray-500 hover:text-amber-600 transition">DA</a>
                 </div>
-                
-                <!-- REMOVED: Custom Cart Icon -->
                 
                 <button id="mobile-menu-button" class="text-gray-800">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -349,7 +361,7 @@
                     <!-- NEW: Legal Info for PMV (Tax Exempt) Business -->
                     <div class="mt-6 pt-4 border-t border-gray-700 w-full md:w-auto text-xs text-gray-500 space-y-1">
                         <p><strong>Owner:</strong> Luke Dorman</p>
-                        <p class="mt-2 italic max-w-xs">The business is operated as a hobbyvirksomhed and is therefore exempt from VAT. All prices are listed without VAT.</p>
+                        <p class="mt-2 italic max-w-xs">The business is operated as a hobby business and is therefore exempt from VAT. All prices are listed without VAT.</p>
                     </div>
                 </div>
                 <!-- Social & Links 
